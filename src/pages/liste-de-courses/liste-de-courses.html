@@ -11,11 +11,24 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>liste de courses</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-only (click)=" this.displayAdd = true"><ion-icon name="add-circle"></ion-icon></button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let item of listeCourses">
+      <ion-label>{{item.title}}</ion-label>
+      <ion-checkbox [(ngModel)]=item.checked (ionChange)="updateList(item)" color="green" checked="false"></ion-checkbox>
+      <button ion-button item-end (click)="removeItem(item)"><ion-icon name="trash"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+  <ion-item *ngIf="displayAdd">
+    <ion-input [(ngModel)]="newItem" placeholder="ingrédient à acheter" ></ion-input>
+    <button ion-button item-end (click)="addItem(newItem)">ADD</button>
+  </ion-item>
 </ion-content>
