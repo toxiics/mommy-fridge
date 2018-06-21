@@ -19,4 +19,19 @@
 <ion-content padding>
 
   Me voici dans le frigo
+
+
+<ion-list *ngIf=ingredients>
+  <ion-item *ngFor="let ingredient of ingredients">
+    <ion-label>{{ingredient.name}}</ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-item *ngIf="saveMyIngredients()">
+    <ion-input [(ngModel)]="name" placeholder="ingredient" ></ion-input>
+    <ion-input [(ngModel)]="quantite" placeholder="quantite" ></ion-input>
+    <ion-input [(ngModel)]="unite" placeholder="unite" ></ion-input>
+    <button ion-button item-end (click)="saveMyIngredients(name,quantite,unite)">SAVE</button>
+</ion-item>
+
 </ion-content>

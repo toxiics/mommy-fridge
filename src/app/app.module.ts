@@ -10,6 +10,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ListeDeCoursesPage } from '../pages/liste-de-courses/liste-de-courses';
 import { PlanificationPage } from '../pages/planification/planification';
 import { RecettesPage } from '../pages/recettes/recettes';
+import {SQLite} from '@ionic-native/sqlite';
+import {SqliteProvider} from '../providers/sqlite/sqlite';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { RecettesPage } from '../pages/recettes/recettes';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -34,6 +38,8 @@ import { RecettesPage } from '../pages/recettes/recettes';
   providers: [
     StatusBar,
     SplashScreen,
+    SQLite,
+    SqliteProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
